@@ -1,85 +1,98 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    Layout = "_MainLayout";
+    Layout = "_Layout";
 }
 
+<!-- ======= Popular Courses Section ======= -->
+<section id="popular-courses" class="courses">
+    <div class="container" data-aos="fade-up">
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="detail-box">
-                            <h1>
-                                Tiết Kiệm<br>
-                            </h1>
-                            <p>
-                                "Tiết kiệm khi mua hàng" đôi khi được hiểu là việc tìm kiếm sản phẩm hoặc dịch vụ với giá tốt nhất, tận dụng các ưu đãi, giảm giá, hoặc mã khuyến mãi để giảm tổng chi phí. Đồng thời, tiết kiệm cũng có thể bao gồm việc tìm hiểu và so sánh giữa các lựa chọn để chọn ra sản phẩm có chất lượng tốt nhất cho mức giá hợp lý.
-                            </p>
+        <div class="section-title">
+            <h2>Courses</h2>
+            <p>Popular Courses</p>
+        </div>
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                <div class="course-item">
+                    <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
+                    <div class="course-content">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4>Web Development</h4>
+                            <p class="price">$169</p>
                         </div>
-                    </div>
-                    <div class="col-md-5 ">
-                        <div class="img-box">
-                            <img src="~/images/safe.png" alt="" />
+
+                        <h3><a href="course-details.html">Website Design</a></h3>
+                        <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                        <div class="trainer d-flex justify-content-between align-items-center">
+                            <div class="trainer-profile d-flex align-items-center">
+                                <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+                                <span>Antonio</span>
+                            </div>
+                            <div class="trainer-rank d-flex align-items-center">
+                                <i class="bx bx-user"></i>&nbsp;50
+                                &nbsp;&nbsp;
+                                <i class="bx bx-heart"></i>&nbsp;65
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="carousel-item ">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="detail-box">
-                            <h1>
-                                Nhanh Chóng <br>
-                            </h1>
-                            <p>
-                                "Giao hàng nhanh khi mua hàng" là quá trình vận chuyển sản phẩm hoặc dịch vụ từ người bán đến người mua trong thời gian ngắn. Quá trình này bao gồm các bước như xác định phương thức giao hàng, điều khoản và chi phí vận chuyển, địa chỉ nhận hàng, v.v. Mục tiêu của giao hàng ngắn là đảm bảo sản phẩm được chuyển giao một cách nhanh chóng và an toàn đến tay khách hàng, tạo sự hài lòng và tiện lợi cho việc mua sắm trực tuyến hoặc offline.
-                            </p>
-                            </a>
+            </div> <!-- End Course Item-->
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                <div class="course-item">
+                    <img src="assets/img/course-2.jpg" class="img-fluid" alt="...">
+                    <div class="course-content">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4>Marketing</h4>
+                            <p class="price">$250</p>
                         </div>
-                    </div>
-                    <div class="col-md-5 ">
-                        <div class="img-box">
-                            <img src="~/images/DL.png" alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item ">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="detail-box">
-                            <h1>
-                                Tiết Kiệm<br>
-                            </h1>
-                            <p>
-                                "An toàn khi mua hàng" ngắn gọn có thể được hiểu là quá trình mua sắm mà không gặp rủi ro hoặc hậuquả tiêu cực, như mất tiền hoặc sản phẩm không đạt chất lượng. Điều này bao gồm mua hàng từ các nguồn tin cậy, kiểm tra chất lượng sản phẩm, sử dụng phương tiện thanh toán an toàn (như thẻ tín dụng hoặc ví điện tử được bảo vệ), và hiểu rõ chính sách đổi trả hoặc bảo hành từ người bán hàng. An toàn khi mua hàng cũng bao gồm việc bảo vệ thông tin cá nhân và tài khoản thanh toán khỏi việc lạm dụng hoặc mạo danh.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-5 ">
-                        <div class="img-box">
-                            <img src="~/images/Save.png" alt="" />
+
+                        <h3><a href="course-details.html">Search Engine Optimization</a></h3>
+                        <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                        <div class="trainer d-flex justify-content-between align-items-center">
+                            <div class="trainer-profile d-flex align-items-center">
+                                <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
+                                <span>Lana</span>
+                            </div>
+                            <div class="trainer-rank d-flex align-items-center">
+                                <i class="bx bx-user"></i>&nbsp;35
+                                &nbsp;&nbsp;
+                                <i class="bx bx-heart"></i>&nbsp;42
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> <!-- End Course Item-->
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                <div class="course-item">
+                    <img src="assets/img/course-3.jpg" class="img-fluid" alt="...">
+                    <div class="course-content">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4>Content</h4>
+                            <p class="price">$180</p>
+                        </div>
+
+                        <h3><a href="course-details.html">Copywriting</a></h3>
+                        <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                        <div class="trainer d-flex justify-content-between align-items-center">
+                            <div class="trainer-profile d-flex align-items-center">
+                                <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
+                                <span>Brandon</span>
+                            </div>
+                            <div class="trainer-rank d-flex align-items-center">
+                                <i class="bx bx-user"></i>&nbsp;20
+                                &nbsp;&nbsp;
+                                <i class="bx bx-heart"></i>&nbsp;85
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Course Item-->
+
         </div>
+
     </div>
-    <div class="carousel_btn-box">
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            <span class="sr-only">Previous</span>
-        </a>
-        <img src="~/images/line.png" alt="" />
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-</div>
+</section><!-- End Popular Courses Section -->

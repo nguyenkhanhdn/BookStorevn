@@ -10,22 +10,23 @@ using BookStorevn.Models;
 
 namespace BookStorevn.Controllers
 {
-    public class CategoriesController : Controller
+    public class OrderMastersController : Controller
     {
         private readonly BookStoreContext _context;
 
-        public CategoriesController(BookStoreContext context)
+        public OrderMastersController(BookStoreContext context)
         {
             _context = context;
         }
 
-        // GET: Categories
+        // GET: OrderMasters
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Categories.ToListAsync());
+            var bookStoreContext = _context.OrderMasters.Include(o => o.Customer);
+            return View(await bookStoreContext.ToListAsync());
         }
 
-        // GET: Categories/Details/5
+        // GET: OrderMasters/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,42 @@ namespace BookStorevn.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
+            var orderMaster = await _context.OrderMasters
+                .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            if (orderMaster == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(orderMaster);
         }
 
-        // GET: Categories/Create
+        // GET: OrderMasters/Create
         public IActionResult Create()
         {
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id");
             return View();
         }
 
-        // POST: Categories/Create
+        // POST: OrderMasters/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CategoryName,Description,Img")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,OrderDate,CustomerId,ContactPerson,Address,Phone,EmployeeId")] OrderMaster orderMaster)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(category);
+                _context.Add(orderMaster);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id", orderMaster.CustomerId);
+            return View(orderMaster);
         }
 
-        // GET: Categories/Edit/5
+        // GET: OrderMasters/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,23 @@ namespace BookStorevn.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            var orderMaster = await _context.OrderMasters.FindAsync(id);
+            if (orderMaster == null)
             {
                 return NotFound();
             }
-            return View(category);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id", orderMaster.CustomerId);
+            return View(orderMaster);
         }
 
-        // POST: Categories/Edit/5
+        // POST: OrderMasters/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoryName,Description,Img")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,OrderDate,CustomerId,ContactPerson,Address,Phone,EmployeeId")] OrderMaster orderMaster)
         {
-            if (id != category.Id)
+            if (id != orderMaster.Id)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace BookStorevn.Controllers
             {
                 try
                 {
-                    _context.Update(category);
+                    _context.Update(orderMaster);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoryExists(category.Id))
+                    if (!OrderMasterExists(orderMaster.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +118,11 @@ namespace BookStorevn.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id", orderMaster.CustomerId);
+            return View(orderMaster);
         }
 
-        // GET: Categories/Delete/5
+        // GET: OrderMasters/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +130,35 @@ namespace BookStorevn.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
+            var orderMaster = await _context.OrderMasters
+                .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            if (orderMaster == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(orderMaster);
         }
 
-        // POST: Categories/Delete/5
+        // POST: OrderMasters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category != null)
+            var orderMaster = await _context.OrderMasters.FindAsync(id);
+            if (orderMaster != null)
             {
-                _context.Categories.Remove(category);
+                _context.OrderMasters.Remove(orderMaster);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoryExists(int id)
+        private bool OrderMasterExists(int id)
         {
-            return _context.Categories.Any(e => e.Id == id);
+            return _context.OrderMasters.Any(e => e.Id == id);
         }
     }
 }

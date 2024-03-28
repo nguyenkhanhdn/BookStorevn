@@ -10,22 +10,22 @@ using BookStorevn.Models;
 
 namespace BookStorevn.Controllers
 {
-    public class CategoriesController : Controller
+    public class StationeriesController : Controller
     {
         private readonly BookStoreContext _context;
 
-        public CategoriesController(BookStoreContext context)
+        public StationeriesController(BookStoreContext context)
         {
             _context = context;
         }
 
-        // GET: Categories
+        // GET: Stationeries
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Categories.ToListAsync());
+            return View(await _context.Stationeries.ToListAsync());
         }
 
-        // GET: Categories/Details/5
+        // GET: Stationeries/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace BookStorevn.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
+            var stationery = await _context.Stationeries
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            if (stationery == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(stationery);
         }
 
-        // GET: Categories/Create
+        // GET: Stationeries/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Categories/Create
+        // POST: Stationeries/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CategoryName,Description,Img")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Img,Quantity,Price")] Stationery stationery)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(category);
+                _context.Add(stationery);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            return View(stationery);
         }
 
-        // GET: Categories/Edit/5
+        // GET: Stationeries/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace BookStorevn.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            var stationery = await _context.Stationeries.FindAsync(id);
+            if (stationery == null)
             {
                 return NotFound();
             }
-            return View(category);
+            return View(stationery);
         }
 
-        // POST: Categories/Edit/5
+        // POST: Stationeries/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoryName,Description,Img")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Img,Quantity,Price")] Stationery stationery)
         {
-            if (id != category.Id)
+            if (id != stationery.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace BookStorevn.Controllers
             {
                 try
                 {
-                    _context.Update(category);
+                    _context.Update(stationery);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoryExists(category.Id))
+                    if (!StationeryExists(stationery.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace BookStorevn.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            return View(stationery);
         }
 
-        // GET: Categories/Delete/5
+        // GET: Stationeries/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +124,34 @@ namespace BookStorevn.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
+            var stationery = await _context.Stationeries
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            if (stationery == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(stationery);
         }
 
-        // POST: Categories/Delete/5
+        // POST: Stationeries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category != null)
+            var stationery = await _context.Stationeries.FindAsync(id);
+            if (stationery != null)
             {
-                _context.Categories.Remove(category);
+                _context.Stationeries.Remove(stationery);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoryExists(int id)
+        private bool StationeryExists(int id)
         {
-            return _context.Categories.Any(e => e.Id == id);
+            return _context.Stationeries.Any(e => e.Id == id);
         }
     }
 }

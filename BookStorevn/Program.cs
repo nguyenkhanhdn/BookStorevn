@@ -10,8 +10,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 //Add this one
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<BookStoreContext>(options =>
+    options.UseSqlServer(connectionString));
 
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();

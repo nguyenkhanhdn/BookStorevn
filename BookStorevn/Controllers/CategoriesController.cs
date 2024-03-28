@@ -12,9 +12,9 @@ namespace BookStorevn.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly BookStoreContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CategoriesController(BookStoreContext context)
+        public CategoriesController(ApplicationDbContext context)
         {
             _context = context;
         }

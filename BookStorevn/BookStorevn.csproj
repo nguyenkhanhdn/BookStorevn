@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\assets\admin\css\fonts\bootstrap-icons.woff2" />
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 

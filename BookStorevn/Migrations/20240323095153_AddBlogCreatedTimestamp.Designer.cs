@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookStorevn.Migrations
 {
-    [DbContext(typeof(BookStoreContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240323095153_AddBlogCreatedTimestamp")]
     partial class AddBlogCreatedTimestamp
     {

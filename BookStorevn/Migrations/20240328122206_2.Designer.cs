@@ -4,6 +4,7 @@ using BookStorevn.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStorevn.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class BookStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240328122206_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,7 +76,7 @@ namespace BookStorevn.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("BookStorevn.Models.OrderDetail", b =>
@@ -105,7 +108,7 @@ namespace BookStorevn.Migrations
 
                     b.HasIndex("StationeryId");
 
-                    b.ToTable("OrderDetails");
+                    b.ToTable("OrderDetail");
                 });
 
             modelBuilder.Entity("BookStorevn.Models.OrderMaster", b =>
@@ -142,7 +145,7 @@ namespace BookStorevn.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("OrderMasters");
+                    b.ToTable("OrderMaster");
                 });
 
             modelBuilder.Entity("BookStorevn.Models.Stationery", b =>

@@ -54,14 +54,14 @@ namespace BookStorevn.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FullName,Address,Email,Phone")] Customer customer)
+        public async Task<IActionResult> Create([Bind("Id,FullName,Address,Email,Phone")] Customer customer)
         {
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            //}
+            }
             return View(customer);
         }
 
